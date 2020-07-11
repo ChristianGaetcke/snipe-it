@@ -1,13 +1,12 @@
 #!/usr/bin/env bash
 ##########################################################
-# Global variables									 	 #
-# $apiKey = '' your SnipeIt API Key						 #
-# example:												 #
+# Global variables #
+# $apiKey = '' your SnipeIt API Key	 #
+# example:#
 # $apiKey = '.......iIsImp0aSI6IjJmMDkyNDg5MzZk....'     #
-# 														 #
 # $baseUrl = '' the Base-Url of your SnipeIT installation#
-# example:												 #
-# $baseUrl = 'https://snipeit.example.com'				 #
+# example:#
+# $baseUrl = 'https://snipeit.example.com'#
 ##########################################################
 
 apiKey=""
