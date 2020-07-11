@@ -51,13 +51,13 @@ enableGUI="1"
 # $statusID is the status checked out assets will be transferred to					#
 # example: statusID = "2"															#
 #####################################################################################
-fsField="2"
-cpuField="_snipeit_cpu_4"
-ramField="_snipeit_ram_2"
-macField="_snipeit_mac_address_1"
-diskField="_snipeit_disksize_3"
-osField="_snipeit_operating_system_6"
-statusID="2"
+fsField=""
+cpuField=""
+ramField=""
+macField=""
+diskField=""
+osField=""
+statusID=""
 
 
 
