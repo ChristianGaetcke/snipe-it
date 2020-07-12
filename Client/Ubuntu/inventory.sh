@@ -61,3 +61,17 @@ macField=""
 diskField=""
 osField=""
 statusID=""
+
+
+assetName=$(hostname)
+#sysModel=$(system_profiler SPHardwareDataType | grep 'Model Name' | cut -d ":" -f2)
+sysManufacturer="Apple"
+#serialNumber=$(system_profiler SPHardwareDataType | grep 'Serial Number' | cut -d ":" -f2 | xargs)
+#ramSize=$(system_profiler SPHardwareDataType | grep 'Memory' | cut -d ":" -f2)
+diskSize=$(df -H | awk '/\/dev\/disk1s1/ {printf("%s\n", $2)}' | tr -d "G")
+diskSize+=" GB"
+#macAddress=$(networksetup -listallhardwareports | grep Wi-Fi -A 3 | awk '/Ethernet Address:/{print $3}'|xargs)
+#sysFull=$(sysctl hw.model | cut -d ":" -f2 | tr -d "\t" | xargs)
+#osName=$(sw_vers | grep 'ProductName'  | cut -d ":" -f2 | tr -d '\t') 
+#osVer=$(sw_vers | grep 'ProductVersion'  | cut -d ":" -f2 | tr -d '\t') 
+os="$osName - $osVer"
