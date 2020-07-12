@@ -1,8 +1,7 @@
 # Snipe-IT Rest Api Clients
 
-
-These clients were created out of lazyness and "cost efficiency" (read: stingyness), as I didn't want to manually inventorize the assets we already had and
-I was not willing to pay for intunes or a similar solution, so this was the most reasonable approach. The user only needs administrative rights on his/her
+## What is this and why?
+This project serves as inventorization clients for Snipe-IT. It was created out of lazyness and "cost efficiency" (read: stingyness), as I didn't want to manually inventorize the assets we already had and I was not willing to pay for intunes or a similar solution, so this was the most reasonable approach. The user only needs administrative rights on his/her
 computer and can run everything.
 
 ## Getting Started
@@ -13,7 +12,7 @@ on how to get Snipe-IT running in Docker (https://snipe-it.readme.io/docs/docker
 
 ### Prerequisites
 
-The Windows10 client is pure powershell and uses forms (with a Base64 encoded Icon).
+The Windows client is pure powershell and uses forms (with a Base64 encoded Icon).
 You don't need to add any modules, as it uses only existing Powershell commands. The only drawback is
 an out of the box restricted execution policy, when it comes to downloaded powershell-scripts.
 That's why I added the helper.bat, which will just call an elevated powershell.
@@ -25,7 +24,7 @@ You can run the whole thing as a script, but won't present the more or less neat
 
 
 
-## Preparing the Snipe-IT and the Clients
+## Preparing Snipe-IT and the Clients
 
 ### Snipe-IT
 
@@ -39,6 +38,24 @@ Afterwards you'll need to get the ID of the fieldset you want to assign to your 
 Last but not least, you'll need to get the status-id of the status you want to have after the device is checked out. This can be found under Status Labels => edit the status label => last number of the URL is the status-ID).
 
 ### Windows client
+
+Just define the parameters by following the examples in inventory.ps1
+´´´
+$apiKey = ''
+$baseUrl = ""
+$fsField = ""
+$cpuField = ""
+$ramField = ""
+$macField = ""
+$diskField = ""
+$osField = ""
+$statusID = ""
+´´´
+and leave everything else as it is. 
+If you want your users to type in the asset tag manually, change ´$getTag=0´ to ´$getTag=0´.
+If you want to disable the GUI, change ´$enableGUI=1´ to ´$enableGUI=2´ (This will only inventorize the asset without a user)
+
+Then save everything and zip the folder and send it out to your users.
 
 ### OSX client
 
