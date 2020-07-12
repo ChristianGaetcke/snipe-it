@@ -1,55 +1,55 @@
 #!/usr/bin/env bash
 ##########################################################
-# Global variables #
-# $apiKey = '' your SnipeIt API Key	 #
-# example:#
-# $apiKey = '.......iIsImp0aSI6IjJmMDkyNDg5MzZk....'     #
-# $baseUrl = '' the Base-Url of your SnipeIT installation#
-# example:#
-# $baseUrl = 'https://snipeit.example.com'#
-##########################################################
+# Global variables 
+# $apiKey = '' your SnipeIt API Key	 
+# example:
+# $apiKey = '.......iIsImp0aSI6IjJmMDkyNDg5MzZk....'     
+# $baseUrl = '' the Base-Url of your SnipeIT installation
+# example:
+# $baseUrl = 'https://snipeit.example.com'
+#########################################################
 
 apiKey=""
 
 baseUrl=""
 
-#########################################
-# enable the GUI?                       #
-# yes:  enableGUI=1                     #
-# only inventorize asset:  enableGUI= 0 #
-# This will not create a user           #
-#########################################
+########################################
+# enable the GUI?                       
+# yes:  enableGUI=1                     
+# only inventorize asset:  enableGUI= 0 
+# This will not create a user           
+########################################
 enableGUI="1"
 
-#####################################
-# automatically get asset tag?      #
-# yes: getTag=0                    #
-# no : getTag=1                    #
-#####################################
+####################################
+# automatically get asset tag?      
+# yes: getTag=0                    
+# no : getTag=1                    
+####################################
 #getTag="1"
 
-#####################################################################################
-# Snipe specific fields:								  							#
-# To store values like Ram, CPU, Mac etc, a fieldset with 							#
-# the corresponding fields needs to be created in snipe.  							#
-# See: https://snipe-it.readme.io/docs/custom-fields#common-custom-fields-regexes	#
-# Fieldset-ID:																		#
-# example: fsField = "2"															#
-# CPU-Field:																		#
-# example: cpuField = "_snipeit_cpu_4"												#
-# RAM-Field:																		#
-# example: ramField = "_snipeit_ram_2"												#
-# Macaddress-Field:																	#
-# example: macField = "_snipeit_mac_address_1"										#
-# Disk-Field:																		#
-# example: diskField = "_snipeit_disksize_3"										#
-# Operatingsystem-Field																#
-# example: osField = "_snipeit_operating_system_6"									#
-# The examples won't work out of the box and need to be generated first				#
-# 																					#
-# $statusID is the status checked out assets will be transferred to					#
-# example: statusID = "2"															#
-#####################################################################################
+####################################################################################
+# Snipe specific fields:								  							
+# To store values like Ram, CPU, Mac etc, a fieldset with 							
+# the corresponding fields needs to be created in snipe.  							
+# See: https://snipe-it.readme.io/docs/custom-fields#common-custom-fields-regexes	
+# Fieldset-ID:																		
+# example: fsField = "2"															
+# CPU-Field:																		
+# example: cpuField = "_snipeit_cpu_4"												
+# RAM-Field:																		
+# example: ramField = "_snipeit_ram_2"												
+# Macaddress-Field:																	
+# example: macField = "_snipeit_mac_address_1"										
+# Disk-Field:																		
+# example: diskField = "_snipeit_disksize_3"										
+# Operatingsystem-Field																
+# example: osField = "_snipeit_operating_system_6"									
+# The examples won't work out of the box and need to be generated first				
+# 																					
+# $statusID is the status checked out assets will be transferred to					
+# example: statusID = "2"															
+####################################################################################
 fsField=""
 cpuField=""
 ramField=""
@@ -61,10 +61,16 @@ statusID=""
 
 
 ####################
-#generate Random PW#
-#of length 12	   #
+#generate Random PW
+#of length 12	   
 ####################
 ranPass=$(openssl rand -hex 12)
+
+
+####################
+#logic for pashua
+#	   GUI
+####################
 
 
 if [ "$enableGUI" = "1" ]
@@ -106,7 +112,7 @@ pashua_run "$conf" "$customLocation"
 fi
 
 #########################################
-# 				system Info	   		    #
+# 				system Info	   		    
 #########################################
 
 assetName=$(hostname)
@@ -188,11 +194,11 @@ manuId=$(echo "$manuId" | sed -E 's/.*"id":"?([^,"]*)"?.*/\1/' | xargs)
 echo $manuId
 echo $manu
 
-#########################################
-# 		curl for category  		    	#
-#		create if non-existant			#
-#		then get category-ID			#
-#########################################
+########################################
+# 		curl for category  		    	
+#		create if non-existant			
+#		then get category-ID			
+########################################
 
 cat=$(curl --request GET \
 --url "$baseUrl/api/v1/categories?search=$category" \
@@ -222,11 +228,11 @@ echo $category
 echo $cat
 echo $catId
 
-#########################################
-# 		curl for model  		    	#
-#		create if non-existant			#
-#		then get model-ID				#
-#########################################
+########################################
+# 		curl for model  		    	
+#		create if non-existant			
+#		then get model-ID				
+########################################
 model=$(curl --request GET \
 --url "$baseUrl/api/v1/models?search=$sysFull" \
 --header 'accept: application/json' \
@@ -254,11 +260,11 @@ modelId=$(echo "$modelId" | sed -E 's/."id":"?([^,"]*)"?.*/\1/' |cut -d "[" -f2 
 echo $model
 echo $modelId
 
-#########################################
-# 		curl for asset  		    	#
-#		create if non-existant			#
-#		then get asset-ID				#
-#########################################
+########################################
+# 		curl for asset  		    	
+#		create if non-existant			
+#		then get asset-ID				
+########################################
 
 asset=$(curl --request GET \
 --url "$baseUrl/api/v1/hardware?search=$serialNumber" \
@@ -275,7 +281,7 @@ then
 --header 'accept: application/json' \
 --header "authorization: Bearer $apiKey" \
 --header 'content-type: application/json' \
---data '{"model_id":'"$modelId"',"status_id": 2,"name": "'"$assetName"'", "serial": "'"$serialNumber"'", "'"$diskField"'": "'"$diskSize"'", "'"$macField"'": "'"$macAddress"'","'"$ramField"'": "'"$ramSize"'", "'"$osField"'": "'"$os"'", "'"$cpuField": "'"$cpu"'" }'
+--data '{"model_id":'"$modelId"',"status_id": 2,"name": "'"$assetName"'", "serial": "'"$serialNumber"'", "'"$diskField"'": "'"$diskSize"'", "'"$macField"'": "'"$macAddress"'","'"$ramField"'": "'"$ramSize"'", "'"$osField"'": "'"$os"'", "'"$cpuField"'": "'"$cpu"'" }'
 else
 	echo "Asset exists"
 fi
@@ -292,11 +298,11 @@ echo $assetId
 
 if [ "$enableGUI" = "1" ]
 then
-#########################################
-# 		curl for user	  		    	#
-#		create if non-existant			#
-#		then get user-ID				#
-#########################################
+########################################
+# 		curl for user	  		    	
+#		create if non-existant			
+#		then get user-ID				
+########################################
 user=$(curl --request GET \
 --url "$baseUrl/api/v1/users?search=$emailAddress" \
 --header 'accept: application/json' \
