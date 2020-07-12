@@ -27,32 +27,12 @@ You can run the whole thing as a script, but won't present the more or less neat
 
 ### Preparing the Clients
 
-All clients will need a previously generated API-key, which can inserted at the top of each script in the variable 
+The following table will show a list of the switches and what they do:
 
-Windows:
-```
-$apiKey = ''
-```
-OSX:
-```
-apiKey = ''
-```
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
-
+| Switch        | Windows       |   OSX
+| ------------- | ------------- |-------------
+| Content Cell  | Content Cell  | Content Cell
+| Content Cell  | Content Cell  | Content Cell
 
 
 ## Deployment
