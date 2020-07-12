@@ -62,11 +62,11 @@ If you want to disable the GUI, change `$enableGUI=1` to `$enableGUI=2` (This wi
 Then save everything and zip the folder and send it out to your users.
 
 After running the batch-file, your users will see this, if you enabled manual setting of the asset-name:
-![Snipe-IT asset manual](img/winclient-no-asset.JPG)
+![Snipe-IT asset manual](img/winclient-asset.JPG)
 
 And this, if you disabled it:
 
-![Snipe-IT asset auto](img/winclient-asset.JPG)
+![Snipe-IT asset auto](img/winclient-no-asset.JPG)
 
 ### OSX client
 
