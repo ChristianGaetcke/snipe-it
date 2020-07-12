@@ -2,13 +2,14 @@
 
 
 These clients were created out of lazyness and "cost efficiency" (read: stingyness), as I didn't want to manually inventorize the assets we already had and
-I was not willing to pay for intunes or a similar solution, so this was the most reasonable approach.
+I was not willing to pay for intunes or a similar solution, so this was the most reasonable approach. The user only needs administrative rights on his/her
+computer and can run everything.
 
 ## Getting Started
 
 You´ll obviously need a working Snipe-IT installation and an API key. 
 This will not be in the scope of this document, but there are some great tutorials
-on how to get Snipe-IT running in Docker (https://snipe-it.readme.io/docs/docker).
+on how to get Snipe-IT running in Docker (https://snipe-it.readme.io/docs/docker) and create an API key.
 
 ### Prerequisites
 
@@ -19,14 +20,23 @@ That's why I added the helper.bat, which will just call an elevated powershell.
 
 For the OSX client, it is strongly advised to use Pashua (https://github.com/BlueM/Pashua - great work of @BlueM) 
 and Playtpus (https://github.com/sveinbjornt/Platypus - great work of @sveinbjornt) to create an app out of the code.
+You can run the whole thing as a script, but won't present the more or less neat UI.
 
 
+
+
+### Preparing the Clients
+
+All clients will need a previously generated API-key, which can inserted at the top of each script in the variable 
+
+Windows:
 ```
-Give examples
+$apiKey = ''
 ```
-
-### Installing
-
+OSX:
+```
+apiKey = ''
+```
 A step by step series of examples that tell you how to get a development env running
 
 Say what the step will be
