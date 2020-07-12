@@ -134,6 +134,10 @@ else
 fi
 pashua_run "$conf" "$customLocation"
 fi
+if [ "$cb" = "1" ]
+then
+exit
+else
 #########################################
 # 				system Info	   		    
 #########################################
@@ -382,4 +386,5 @@ osascript -e 'display alert "your device has been successfully inventorized" mes
 exit
 else
  exit
+fi
 fi
