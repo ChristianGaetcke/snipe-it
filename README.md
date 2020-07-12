@@ -8,7 +8,7 @@ computer and can run everything.
 
 You´ll obviously need a working Snipe-IT installation and an API key. 
 This will not be in the scope of this document, but there are some great tutorials
-on how to get Snipe-IT running in Docker (https://snipe-it.readme.io/docs/docker) and create an API key.
+on how to get [Snipe-IT running in Docker](https://snipe-it.readme.io/docs/docker) and create an API key.
 
 ### Prerequisites
 
