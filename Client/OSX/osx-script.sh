@@ -8,9 +8,7 @@
 # example:
 # $baseUrl = 'https://snipeit.example.com'
 #########################################################
-
 apiKey=""
-
 baseUrl=""
 
 ########################################
@@ -58,20 +56,16 @@ diskField=""
 osField=""
 statusID=""
 
-
-
 ####################
 #generate Random PW
 #of length 12	   
 ####################
 ranPass=$(openssl rand -hex 12)
 
-
 ####################
 #logic for pashua
 #	   GUI
 ####################
-
 
 if [ "$enableGUI" = "1" ]
 then
@@ -126,7 +120,6 @@ db.type = defaultbutton
 db.tooltip = Inventorize my device
 "
 fi
-
 if [ -d '/Volumes/Pashua/Pashua.app' ]
 then
 	###############################################################
@@ -139,15 +132,11 @@ else
 	#################################################
 	customLocation=''
 fi
-
-
 pashua_run "$conf" "$customLocation"
 fi
-
 #########################################
 # 				system Info	   		    
 #########################################
-
 assetName=$(hostname)
 sysModel=$(system_profiler SPHardwareDataType | grep 'Model Name' | cut -d ":" -f2)
 sysManufacturer="Apple"
@@ -177,8 +166,6 @@ esac
 
 cpu=$((system_profiler SPHardwareDataType | grep 'Processor Name' | cut -d ":" -f2) ; (system_profiler SPHardwareDataType | grep 'Processor Speed' | cut -d ":" -f2) | cat)
 cpu=$(echo "$cpu" | tr -d "\n")
-
-
 
 #########################################
 # 		 get username and split    	    
