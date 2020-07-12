@@ -84,8 +84,8 @@ osField = ""
 statusID = ""
 ```
 and leave everything else as it is. 
-If you want your users to type in the asset tag manually, change `getTag=1` to `getTag=0`.
-If you want to disable the GUI, change `enableGUI=0` to `enableGUI=1` (This will only inventorize the asset without a user)
+If you want your users to type in the asset tag manually, change `getTag="1"` to `getTag="0"`.
+If you want to disable the GUI, change `enableGUI="0"` to `enableGUI="1"` (This will only inventorize the asset without a user)
 
 Now open Platypus and add the script to your new program.
 
