@@ -17,8 +17,8 @@ You don't need to add any modules, as it uses only existing Powershell commands.
 an out of the box restricted execution policy, when it comes to downloaded powershell-scripts.
 That's why I added the helper.bat, which will just call an elevated powershell.
 
-For the OSX client, it is strongly advised to use Pashua (https://github.com/BlueM/Pashua - great work of @BlueM) 
-and Playtpus (https://github.com/sveinbjornt/Platypus - great work of @sveinbjornt) to create an app out of the code.
+For the OSX client, it is strongly advised to use [Pashua](https://github.com/BlueM/Pashua) - great work of @BlueM -
+and [Playtpus](https://github.com/sveinbjornt/Platypus) - great work of @sveinbjornt -  to create an app out of the code.
 You can run the whole thing as a script, but won't present the more or less neat UI.
 
 
