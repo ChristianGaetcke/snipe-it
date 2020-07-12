@@ -25,7 +25,9 @@ You can run the whole thing as a script, but won't present the more or less neat
 
 
 
-### Preparing the Clients
+## Preparing the Snipe-IT and the Clients
+
+### Snipe-IT
 
 You'll need to create some fieldsets in Snipe-IT for these clients to work properly. For a proper inventorization I choose the CPU, Disksize, Ramsize, Primary Macaddress and the OS.
 These fields need to be added to the client-scripts, as they aren't standartized. The names of the fields need to be pulled from Snipe-IT => Custom Fields => DB Field and then inserted into the clients.
@@ -35,6 +37,10 @@ These fields need to be added to the client-scripts, as they aren't standartized
 Afterwards you'll need to get the ID of the fieldset you want to assign to your assets. (You can find it by going to your custom fieldsets => open the fieldset itself=>last number of the URL is the fieldset ID).
 
 Last but not least, you'll need to get the status-id of the status you want to have after the device is checked out. This can be found under Status Labels => edit the status label => last number of the URL is the status-ID).
+
+### Windows client
+
+### OSX client
 
 ## Deployment
 
@@ -50,7 +56,7 @@ The code is far from perfect or optimized, but should serve as an inspiration fo
 ## Built With
 
 * [Visual Studio Code](https://code.visualstudio.com/) 
-* [Snipe-IT] (https://snipeitapp.com/)
+* [Snipe-IT](https://snipeitapp.com/)
 
 
 ## License
