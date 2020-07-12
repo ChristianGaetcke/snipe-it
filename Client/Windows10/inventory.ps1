@@ -1,35 +1,35 @@
-#################################################################################################
-# Scripted by: Christian Gätcke 								#
-# Created on: 02/07/2020  									#
-#################################################################################################
+#####################################################
+# Scripted by: Christian Gätcke 					
+# Created on: 02/07/2020  							
+#####################################################
 
 
-#####################################
-# automatically get asset tag?      #
-# yes: $getTag=0                    #
-# no : $getTag=1                    #
-#####################################
+###################################
+# automatically get asset tag?     
+# yes: $getTag=0                   
+# no : $getTag=1                   
+###################################
 $getTag=0
 
-#########################################
-# enable the GUI?                       #
-# yes: $enableGUI=1                     #
-# powershell only : $enableGUI= 0       #
-# only inventorize asset: $enableGUI= 2 #
-# This will not create a user           #
-#########################################
+########################################
+# enable the GUI?                       
+# yes: $enableGUI=1                     
+# powershell only : $enableGUI= 0       
+# only inventorize asset: $enableGUI= 2 
+# This will not create a user           
+########################################
 $enableGUI=1
 
-##########################################################
-# Global variables					 #
-# $apiKey = '' your SnipeIt API Key			 #
-# example:						 #
-# $apiKey = '.......iIsImp0aSI6IjJmMDkyNDg5MzZk....'     #
-# 							 #
-# $baseUrl = '' the Base-Url of your SnipeIT installation#
-# example:						 #
-# $baseUrl = 'https://snipeit.example.com'		 #
-##########################################################
+#########################################################
+# Global variables					 
+# $apiKey = '' your SnipeIt API Key			 
+# example:						 
+# $apiKey = '.......iIsImp0aSI6IjJmMDkyNDg5MzZk....'     
+# 							 
+# $baseUrl = '' the Base-Url of your SnipeIT installation
+# example:						 
+# $baseUrl = 'https://snipeit.example.com'		 
+#########################################################
 
 $apiKey = ''
 $header = @{'authorization'='Bearer ' + $apiKey ;'accept' = 'application/json' ; 'content-type' = 'application/json'}
@@ -37,26 +37,26 @@ $baseUrl = ""
 
 
 #########################################################################################
-# Snipe specific fields:								#
-# To store values like Ram, CPU, Mac etc, a fieldset with 				#
-# the corresponding fields needs to be created in snipe.  				#
-# See: https://snipe-it.readme.io/docs/custom-fields#common-custom-fields-regexes	#
-# Fieldset-ID:										#
-# example: $fsField = "2"								#
-# CPU-Field:										#
-# example: $cpuField = "_snipeit_cpu_4"							#
-# RAM-Field:										#
-# example: $ramField = "_snipeit_ram_2"							#
-# Macaddress-Field:									#
-# example: $macField = "_snipeit_mac_address_1"						#
-# Disk-Field:										#
-# example: $diskField = "_snipeit_disksize_3"						#
-# Operatingsystem-Field									#
-# example: $osField = "_snipeit_operating_system_6"					#
-# The examples won't work out of the box and need to be generated first			#
+# Snipe specific fields:								
+# To store values like Ram, CPU, Mac etc, a fieldset with 				
+# the corresponding fields needs to be created in snipe.  				
+# See: https://snipe-it.readme.io/docs/custom-fields#common-custom-fields-regexes	
+# Fieldset-ID:										
+# example: $fsField = "2"							
+# CPU-Field:										
+# example: $cpuField = "_snipeit_cpu_4"				
+# RAM-Field:										
+# example: $ramField = "_snipeit_ram_2"				
+# Macaddress-Field:									
+# example: $macField = "_snipeit_mac_address_1"		
+# Disk-Field:										
+# example: $diskField = "_snipeit_disksize_3"		
+# Operatingsystem-Field								
+# example: $osField = "_snipeit_operating_system_6"	
+# The examples won't work out of the box and need to be generated first			
 # 											#
-# $statusID is the status checked out assets will be transferred to			#
-# example: $statusID = "2"								#
+# $statusID is the status checked out assets will be transferred to			
+# example: $statusID = "2"								
 #########################################################################################
 
 $fsField = "2"
@@ -79,34 +79,34 @@ $ranPass = (-join ((65..90) + (97..122) | Get-Random -Count 12 | ForEach-Object 
 #####################################################################################################################################################################################
 
 ##################
-#get Computername#
-#will be used as #
-#Asset Name	 #
+#get Computername
+#will be used as 
+#Asset Name	 
 ##################
 $computername = $env:computername
 
 
 ###################################
-#get System Model and Manufacturer#
+#get System Model and Manufacturer
 ###################################
 $sysModel = (Get-CimInstance -ClassName Win32_ComputerSystem | Select-Object -expand Model) -replace '\s','-'
 $sysManufacturer = (Get-CimInstance -ClassName Win32_ComputerSystem | Select-Object -expand Manufacturer) -replace '\s','-'
 $serialNumber = ( Get-WmiObject -Class Win32_BIOS).SerialNumber
 
 ########
-#get OS#
+#get OS
 ########
 
 $operatingSystem = (Get-WMIObject win32_operatingsystem | Select-Object -expand name).split('|')[0]
 Select-Object -Property SystemType
 
 #####
-#CPU#
+#CPU
 #####
 $CPU = Get-CimInstance -ClassName Win32_Processor | Select-Object -ExcludeProperty "CIM*" -expand Name
 
 ##################
-#Disksize in GB  # 
+#Disksize in GB   
 ##################
 $disksizeinbytes = Get-CimInstance -ClassName Win32_LogicalDisk -Filter "DriveType=3" |
   Measure-Object -Property Size -Sum |
@@ -115,14 +115,14 @@ $disksize = ([math]::Round($disksizeinbytes / 1073741824))
 $disksize =[string]$disksize + ' GB'
 
 ###############
-#Ramsize in GB#
+#Ramsize in GB
 ###############
 $ramsizeinbytes = Get-CimInstance win32_physicalmemory | Select-Object capacity -expand capacity | Measure-Object -Property capacity -Sum | Select-Object -Property Property,Sum -expand Sum 
 $ramsize = [math]::Round($ramsizeinbytes / 1073741824) 
 $ramsize = [string]$ramsize + ' GB'
 
 ####################
-#primary MacAddress#
+#primary MacAddress
 ####################
 $primaryMacaddress = Get-WmiObject win32_networkadapterconfiguration `
 | Select-Object -Property @{name='IPAddress';Expression={($_.IPAddress[0])}},MacAddress,Description `
@@ -134,11 +134,11 @@ $primaryMacaddress = $primaryMacaddress[0]
 {$primaryMacaddress = $primaryMacaddress}
 
 #################################################################################################
-# Credits go to:										#
-# Scripted by: Adam Bacon  									#
-# Created on: 15/03/2011  									#
-# Scripted in: Powershell will work in V1 & V2 of Powershell					#
-# See: https://gallery.technet.microsoft.com/scriptcenter/c0bc039d-5bbf-4c8b-8307-e44da22a42b5	#
+# Credits go to:										
+# Scripted by: Adam Bacon  									
+# Created on: 15/03/2011  									
+# Scripted in: Powershell will work in V1 & V2 of Powershell					
+# See: https://gallery.technet.microsoft.com/scriptcenter/c0bc039d-5bbf-4c8b-8307-e44da22a42b5	
 #################################################################################################
 function check-chassis {  
     BEGIN {}  
@@ -308,14 +308,14 @@ $script:assetTag = $compName.Text.Trim()
 
 
 ################################################################################################################################################
-#To test this output, run:														       #
-#echo $computername ,  $sysModel ,  $sysManufacturer ,  $CPU ,  $disksize ,  $ramsize ,  $primaryMacaddress ,  $operatingSystem , $serialNumber#
+#To test this output, run:														       
+#echo $computername ,  $sysModel ,  $sysManufacturer ,  $CPU ,  $disksize ,  $ramsize ,  $primaryMacaddress ,  $operatingSystem , $serialNumber
 ################################################################################################################################################
 
 ###########################################################
-#call to your Snipe-instance: Does the manufacturer exist?#
-#if not, create the manufacturer; 			  #
-#else get the manufacturer's ID      			  #
+#call to your Snipe-instance: Does the manufacturer exist?
+#if not, create the manufacturer; 			  
+#else get the manufacturer's ID      			  
 ###########################################################
 
 $manufactJson = Invoke-RestMethod -Uri "$baseUrl/api/v1/manufacturers?search=$sysManufacturer" -Headers $header -Method GET
@@ -331,9 +331,9 @@ $manufact = ( $manufactJson | Select-Object -expand "name" )
 	}
 
 ###########################################################
-#call to your Snipe-instance: Does the category exist?	  #
-#if not, create the category; 				  #
-#else get the category's ID		      		  #
+#call to your Snipe-instance: Does the category exist?	  
+#if not, create the category; 				  
+#else get the category's ID		      		  
 ###########################################################
 $catJson = Invoke-RestMethod -Uri "$baseUrl/api/v1/categories?search=$categoryName" -Headers $header -Method GET
 $catJson = $catJson | Select-Object -ExpandProperty rows
@@ -345,9 +345,9 @@ $cat = ( $catJson | Select-Object -expand "name" )
     $categoryId = Invoke-RestMethod -Uri "$baseUrl/api/v1/categories?search=$categoryName" -Headers $header -Method GET | Select-Object -ExpandProperty rows | Select-Object -expand id}
 
 ###########################################################
-#call to your Snipe-instance: Does the model exist?	  #
-#if not, create the model; 				  #
-#else get the model's ID		      		  #
+#call to your Snipe-instance: Does the model exist?	  
+#if not, create the model; 				  
+#else get the model's ID		      		  
 ###########################################################
 
 $modelJson = Invoke-RestMethod -Uri "$baseUrl/api/v1/models?limit=50&offset=0&search=$sysModel" -Headers $header -Method GET
@@ -366,12 +366,12 @@ $model = ( $modelJson | Select-Object -expand "name" )
 
 
 ###########################################################
-#call to your Snipe-instance: Does the asset exist?	  #
-#if not, create the asset; 				  #
-#else get the asset's ID		      		  #
-#IMPORTANT: The serial number of the asset will be used   #
-#to look the asset up. Make sure, your devices have a SN  #
-#as older Boards sometimes don't propagate it		  #
+#call to your Snipe-instance: Does the asset exist?	  
+#if not, create the asset; 				  
+#else get the asset's ID		      		  
+#IMPORTANT: The serial number of the asset will be used   
+#to look the asset up. Make sure, your devices have a SN  
+#as older Boards sometimes don't propagate it		  
 ###########################################################
 
 $assetJson = Invoke-RestMethod -Uri "$baseUrl/api/v1/hardware?search=$serialNumber" -Headers $header -Method GET
@@ -393,13 +393,13 @@ $assets = ( $assetJson | Select-Object -expand "serial" )
 	
 
 ############################################################
-#call to your Snipe-instance: Does the user exist?	   #
-#if not, create the user and disallow login; 		   #
-# >>"activated" = 'false'<<				   #
-#else get the user's ID 		      		   #
-#IMPORTANT: This script expects either name@example.com or #
-#firstname.lastname@example.com as username.		   #
-#I highly suggest to take the firstname.lastname approach  #
+#call to your Snipe-instance: Does the user exist?	   
+#if not, create the user and disallow login; 		   
+# >>"activated" = 'false'<<				   
+#else get the user's ID 		      		   
+#IMPORTANT: This script expects either name@example.com or 
+#firstname.lastname@example.com as username.		   
+#I highly suggest to take the firstname.lastname approach  
 ############################################################
 
 $unameSplit = ($unameInput).split('@')[0]
@@ -427,10 +427,10 @@ $users = ( $userJson | Select-Object -expand "username")
 	 }
 
 ##########################################
-# check out sasset to user        	 #
-# and update the status and asset tag	 #
-# if necessary	(e.g. if you change the  #
-# sticker on the device			 #
+# check out sasset to user        	 
+# and update the status and asset tag	 
+# if necessary	(e.g. if you change the  
+# sticker on the device			 
 ##########################################
 
 $JSON = @{ "checkout_to_type" = "user" ; "assigned_user" = $userId} | ConvertTo-Json
@@ -463,9 +463,9 @@ $unameInput = Read-Host -Prompt 'Please type in your emailaddress'
 }
 
 ###########################################################
-#call to your Snipe-instance: Does the manufacturer exist?#
-#if not, create the manufacturer; 			  #
-#else get the manufacturer's ID      			  #
+#call to your Snipe-instance: Does the manufacturer exist?
+#if not, create the manufacturer; 			  
+#else get the manufacturer's ID      			  
 ###########################################################
 $manufactJson = Invoke-RestMethod -Uri "$baseUrl/api/v1/manufacturers?search=$sysManufacturer" -Headers $header -Method GET
 $manufactJson = $manufactJson | Select-Object -ExpandProperty rows
@@ -478,9 +478,9 @@ $manufact = ( $manufactJson | Select-Object -expand "name" )
     $manId = Invoke-RestMethod -Uri "$baseUrl/api/v1/manufacturers?search=$sysManufacturer" -Headers $header -Method GET | Select-Object -ExpandProperty rows | Select-Object -expand id
     }
 ###########################################################
-#call to your Snipe-instance: Does the category exist?	  #
-#if not, create the category; 				  #
-#else get the category's ID      			  #
+#call to your Snipe-instance: Does the category exist?	  
+#if not, create the category; 				  
+#else get the category's ID      			  
 ###########################################################
 $catJson = Invoke-RestMethod -Uri "$baseUrl/api/v1/categories?search=$categoryName" -Headers $header -Method GET
 $catJson = $catJson | Select-Object -ExpandProperty rows
@@ -491,9 +491,9 @@ $cat = ( $catJson | Select-Object -expand "name" )
     Invoke-RestMethod -Uri $baseUrl/api/v1/categories -Headers $header -Method POST -Body $JSON
     $categoryId = Invoke-RestMethod -Uri "$baseUrl/api/v1/categories?search=$categoryName" -Headers $header -Method GET | Select-Object -ExpandProperty rows | Select-Object -expand id}
 ###########################################################
-#call to your Snipe-instance: Does the model exist?	  #
-#if not, create the model; 				  #
-#else get the model's ID		      		  #
+#call to your Snipe-instance: Does the model exist?	  
+#if not, create the model; 				  
+#else get the model's ID		      		  
 ###########################################################
 $modelJson = Invoke-RestMethod -Uri "$baseUrl/api/v1/models?limit=50&offset=0&search=$sysModel" -Headers $header -Method GET
 $modelJson = $modelJson | Select-Object -ExpandProperty rows
@@ -506,12 +506,12 @@ $model = ( $modelJson | Select-Object -expand "name" )
     $modelId = Invoke-RestMethod -Uri $baseUrl/api/v1/models?search=$sysModel -Headers $header -Method GET | Select-Object -ExpandProperty rows | Select-Object -expand id
     }
 ###########################################################
-#call to your Snipe-instance: Does the asset exist?	  #
-#if not, create the asset; 				  #
-#else get the asset's ID		      		  #
-#IMPORTANT: The serial number of the asset will be used   #
-#to look the asset up. Make sure, your devices have a SN  #
-#as older Boards sometimes don't propagate it		  #
+#call to your Snipe-instance: Does the asset exist?	  
+#if not, create the asset; 				  
+#else get the asset's ID		      		  
+#IMPORTANT: The serial number of the asset will be used   
+#to look the asset up. Make sure, your devices have a SN  
+#as older Boards sometimes don't propagate it		  
 ###########################################################
 $assetJson = Invoke-RestMethod -Uri "$baseUrl/api/v1/hardware?search=$serialNumber" -Headers $header -Method GET
 $assetJson = $assetJson | Select-Object -ExpandProperty rows
