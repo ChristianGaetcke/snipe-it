@@ -65,7 +65,9 @@ After running the batch-file, your users will see this, if you enabled manual se
 ![Snipe-IT asset manual](img/winclient-no-asset.JPG)
 
 And this, if you disabled it:
+
 ![Snipe-IT asset auto](img/winclient-asset.JPG)
+
 ### OSX client
 
 Download [Platypus](https://github.com/sveinbjornt/Platypus) and [Pashua](https://github.com/BlueM/Pashua)
