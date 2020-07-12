@@ -59,7 +59,7 @@ $baseUrl = ""
 # example: $statusID = "2"								
 #########################################################################################
 
-$fsField = "2"
+$fsField = "4"
 $cpuField = "_snipeit_cpu_4"
 $ramField = "_snipeit_ram_2"
 $macField = "_snipeit_mac_address_1"
