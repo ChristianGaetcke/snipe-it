@@ -35,7 +35,11 @@ These fields need to be added to the client-scripts, as they aren't standartized
 
 Afterwards you'll need to get the ID of the fieldset you want to assign to your assets. (You can find it by going to your custom fieldsets => open the fieldset itself=>last number of the URL is the fieldset ID).
 
+![Snipe-IT Fieldset ID](img/fieldset-id.JPG)
+
 Last but not least, you'll need to get the status-id of the status you want to have after the device is checked out. This can be found under Status Labels => edit the status label => last number of the URL is the status-ID).
+
+![Snipe-IT Statuslabel](img/statuslabel.JPG)
 
 ### Windows client
 
