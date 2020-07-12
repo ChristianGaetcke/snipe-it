@@ -29,15 +29,6 @@ You can run the whole thing as a script, but won't present the more or less neat
 
 The following table will show a list of the switches and what they do:
 
-| Switch        | Windows       |   OSX       | Linux
-| ------------- | ------------- |-------------|--------------
-|enable GUI |               |             |
-|disable GUI|               |             |
-|enable automatic Tag|               |             |
-|               |               |             |
-|               |               |             |
-|               |               |             |
-
 ## Deployment
 
 The Windows client should include the helper.bat to bypass the execution-policy, as most Windows installations will have a restricted execution policy. Just zip both files into a folder
