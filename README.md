@@ -59,6 +59,8 @@ Then save everything and zip the folder and send it out to your users.
 
 ### OSX client
 
+Download [Platypus](https://github.com/sveinbjornt/Platypus) and [Pashua](https://github.com/BlueM/Pashua)
+
 ## Deployment
 
 The Windows client should include the helper.bat to bypass the execution-policy, as most Windows installations will have a restricted execution policy. Just zip both files into a folder
@@ -74,7 +76,8 @@ The code is far from perfect or optimized, but should serve as an inspiration fo
 
 * [Visual Studio Code](https://code.visualstudio.com/) 
 * [Snipe-IT](https://snipeitapp.com/)
-
+* [Platypus](https://github.com/sveinbjornt/Platypus)
+* [Pashua](https://github.com/BlueM/Pashua)
 
 ## License
 BSD 3-Clause License
