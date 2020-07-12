@@ -40,7 +40,7 @@ Last but not least, you'll need to get the status-id of the status you want to h
 ### Windows client
 
 Just define the parameters by following the examples in inventory.ps1
-´´´
+```
 $apiKey = ''
 $baseUrl = ""
 $fsField = ""
@@ -50,7 +50,7 @@ $macField = ""
 $diskField = ""
 $osField = ""
 $statusID = ""
-´´´
+```
 and leave everything else as it is. 
 If you want your users to type in the asset tag manually, change ´$getTag=0´ to ´$getTag=0´.
 If you want to disable the GUI, change ´$enableGUI=1´ to ´$enableGUI=2´ (This will only inventorize the asset without a user)
