@@ -84,6 +84,8 @@ source "$MYDIR/pashua.sh"
  #Define what the dialog should be like
  #Take a look at Pashua's Readme file for more info on the syntax
  #################################################################
+if [ "$getTag" = "1" ]
+then
 conf="
 #Set window title
 *.title = Inventorization
@@ -94,13 +96,10 @@ tf.type = textfield
 tf.label = Emailaddress
 tf.default = 
 tf.width = 310
-if [ "$getTag" = "1" ]
-then
 tf2.type = textfield
 tf2.label = Asset Tag
 tf2.default = 
 tf2.width = 310
-fi
 #tf.tooltip = This is an element of type “textfield”
 #Add a cancel button with default label
 cb.type = cancelbutton
@@ -108,6 +107,25 @@ cb.tooltip = This is an element of type “cancelbutton”
 db.type = defaultbutton
 db.tooltip = Inventorize my device
 "
+else
+conf="
+#Set window title
+*.title = Inventorization
+*.x = 350
+*.y = 200
+#Add a text field
+tf.type = textfield
+tf.label = Emailaddress
+tf.default = 
+tf.width = 310
+#tf.tooltip = This is an element of type “textfield”
+#Add a cancel button with default label
+cb.type = cancelbutton
+cb.tooltip = This is an element of type “cancelbutton”
+db.type = defaultbutton
+db.tooltip = Inventorize my device
+"
+fi
 
 if [ -d '/Volumes/Pashua/Pashua.app' ]
 then
@@ -293,15 +311,20 @@ asset=$(curl --request GET \
 
 if [ "$asset" = '{"total":0,"rows":[]}' ]
 then
+if [ "$getTag" = "0" ]
+then
 	curl --request POST \
 --url "$baseUrl/api/v1/hardware" \
 --header 'accept: application/json' \
 --header "authorization: Bearer $apiKey" \
 --header 'content-type: application/json' \
-if [ "$getTag" = "0" ]
-then
 --data '{"model_id":'"$modelId"',"status_id": 2,"name": "'"$assetName"'", "serial": "'"$serialNumber"'", "'"$diskField"'": "'"$diskSize"'", "'"$macField"'": "'"$macAddress"'","'"$ramField"'": "'"$ramSize"'", "'"$osField"'": "'"$os"'", "'"$cpuField"'": "'"$cpu"'" }'
 else
+	curl --request POST \
+--url "$baseUrl/api/v1/hardware" \
+--header 'accept: application/json' \
+--header "authorization: Bearer $apiKey" \
+--header 'content-type: application/json' \
 --data '{"model_id":'"$modelId"',"asset_tag":"'"$tagString"'","status_id": 2,"name": "'"$assetName"'", "serial": "'"$serialNumber"'", "'"$diskField"'": "'"$diskSize"'", "'"$macField"'": "'"$macAddress"'","'"$ramField"'": "'"$ramSize"'", "'"$osField"'": "'"$os"'", "'"$cpuField"'": "'"$cpu"'" }'
 fi
 else
