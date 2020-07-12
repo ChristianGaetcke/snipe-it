@@ -38,7 +38,8 @@ The OSX client
 
 ## Built With
 
-* [Visual Studio Code](https://code.visualstudio.com/) - The web framework used
+* [Visual Studio Code](https://code.visualstudio.com/) 
+* [Snipe-IT] (https://snipeitapp.com/)
 
 
 ## License
@@ -47,6 +48,6 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+* Marco Blüm for Pashua
+* Sveinbjorn Thordarson for Platypus
+* Adam Bacon for the chassis-type code
