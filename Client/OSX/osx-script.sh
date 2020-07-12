@@ -26,7 +26,7 @@ enableGUI="1"
 # yes: getTag=0                    
 # no : getTag=1                    
 ####################################
-#getTag="1"
+getTag="1"
 
 ####################################################################################
 # Snipe specific fields:								  							
@@ -94,6 +94,13 @@ tf.type = textfield
 tf.label = Emailaddress
 tf.default = 
 tf.width = 310
+if [ "$getTag" = "1" ]
+then
+tf2.type = textfield
+tf2.label = Asset Tag
+tf2.default = 
+tf2.width = 310
+fi
 #tf.tooltip = This is an element of type “textfield”
 #Add a cancel button with default label
 cb.type = cancelbutton
@@ -136,6 +143,7 @@ osName=$(sw_vers | grep 'ProductName'  | cut -d ":" -f2 | tr -d '\t')
 osVer=$(sw_vers | grep 'ProductVersion'  | cut -d ":" -f2 | tr -d '\t') 
 os="$osName - $osVer"
 emailAddress=$tf
+tagString=$tf2
 
 #########################################
 # Switch case for different categpories 
@@ -290,7 +298,12 @@ then
 --header 'accept: application/json' \
 --header "authorization: Bearer $apiKey" \
 --header 'content-type: application/json' \
+if [ "$getTag" = "0" ]
+then
 --data '{"model_id":'"$modelId"',"status_id": 2,"name": "'"$assetName"'", "serial": "'"$serialNumber"'", "'"$diskField"'": "'"$diskSize"'", "'"$macField"'": "'"$macAddress"'","'"$ramField"'": "'"$ramSize"'", "'"$osField"'": "'"$os"'", "'"$cpuField"'": "'"$cpu"'" }'
+else
+--data '{"model_id":'"$modelId"',"asset_tag":"'"$tagString"'","status_id": 2,"name": "'"$assetName"'", "serial": "'"$serialNumber"'", "'"$diskField"'": "'"$diskSize"'", "'"$macField"'": "'"$macAddress"'","'"$ramField"'": "'"$ramSize"'", "'"$osField"'": "'"$os"'", "'"$cpuField"'": "'"$cpu"'" }'
+fi
 else
 	echo "Asset exists"
 fi
