@@ -29,11 +29,14 @@ You can run the whole thing as a script, but won't present the more or less neat
 
 The following table will show a list of the switches and what they do:
 
-| Switch        | Windows       |   OSX
-| ------------- | ------------- |-------------
-| Content Cell  | Content Cell  | Content Cell
-| Content Cell  | Content Cell  | Content Cell
-
+| Switch        | Windows       |   OSX       | Linux
+| ------------- | ------------- |-------------|--------------
+|enable GUI |               |             |
+|disable GUI|               |             |
+|enable automatic Tag|               |             |
+|               |               |             |
+|               |               |             |
+|               |               |             |
 
 ## Deployment
 
