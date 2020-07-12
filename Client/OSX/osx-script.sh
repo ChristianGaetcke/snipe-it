@@ -76,10 +76,14 @@ ranPass=$(openssl rand -hex 12)
 if [ "$enableGUI" = "1" ]
 then
 MYDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+ ###########################################################################
  #Include pashua.sh to be able to use the 2 functions defined in that file
+ ###########################################################################
 source "$MYDIR/pashua.sh"
+ #################################################################
  #Define what the dialog should be like
  #Take a look at Pashua's Readme file for more info on the syntax
+ #################################################################
 conf="
 #Set window title
 *.title = Inventorization
@@ -100,10 +104,14 @@ db.tooltip = Inventorize my device
 
 if [ -d '/Volumes/Pashua/Pashua.app' ]
 then
+	###############################################################
 	# Looks like the Pashua disk image is mounted. Run from there.
+	###############################################################
 	customLocation='/Volumes/Pashua'
 else
+	#################################################
 	# Search for Pashua in the standard locations
+	#################################################
 	customLocation=''
 fi
 
@@ -130,7 +138,8 @@ os="$osName - $osVer"
 emailAddress=$tf
 
 #########################################
-# Switch case for different categpories #
+# Switch case for different categpories 
+# Please extend as necessary
 #########################################
 
 case "$sysFull" in
@@ -146,7 +155,7 @@ cpu=$(echo "$cpu" | tr -d "\n")
 
 
 #########################################
-# 		 get username and split    	    #
+# 		 get username and split    	    
 #########################################
 
 username=$(echo "$emailAddress" | cut -d "@" -f1)
@@ -162,11 +171,11 @@ else
 	firstName=$(echo "$username" | cut -d "." -f1)
 fi
 
-#########################################
-# 		curl for manufacturer  		    #
-#		create if non-existant			#
-#		then get manufacturer-ID		#
-#########################################
+########################################
+# 		curl for manufacturer  		    
+#		create if non-existant			
+#		then get manufacturer-ID		
+########################################
 manu=$(curl --request GET \
 --url "$baseUrl/api/v1/manufacturers?search=$sysManufacturer" \
 --header 'accept: application/json' \
@@ -331,7 +340,7 @@ echo $user
 echo $userId
 
 #########################################
-# 		checkout asset to user			#
+# 	checkout asset to user			
 #########################################
 curl --request POST \
 --url "$baseUrl/api/v1/hardware/$assetId/checkout" \
