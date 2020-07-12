@@ -70,7 +70,7 @@ And this, if you disabled it:
 
 ### OSX client
 
-On a Mac: Download [Platypus](https://github.com/sveinbjornt/Platypus) and [Pashua](https://github.com/BlueM/Pashua). Download tosx-script.sh and pashua.sh.
+On a Mac: Download [Platypus](https://github.com/sveinbjornt/Platypus) and [Pashua](https://github.com/BlueM/Pashua). Download osx-script.sh and pashua.sh.
 Define the parameters by following the examples in osx-script.sh.
 ```
 apiKey = ''
