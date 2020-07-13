@@ -63,6 +63,32 @@ osField=""
 statusID=""
 
 
+
+####################################################################################
+# prompt for root account, as serial can't be read without root
+# credit to Wolfgang Pavel
+####################################################################################
+
+if passwort=$(zenity --entry --hide-text --text "This script needs root permission:" --title "Please enter your password" 2> /dev/null); then
+  if ! [ -z $passwort ]; then # enter password, not empty
+    echo "$passwort" | sudo -S -i -k pwd > /dev/null 2> /dev/null
+    if ! [ $? -eq 0 ]; then # Wrong password
+      zenity --warning --no-wrap --text "Wrong password!" --title "Passwort" 2> /dev/null
+      exit
+    else # password right
+      echo "$passwort" | sudo -S -i -k $@ lshw -c system # get system data
+      if ! [ $? -eq 0 ]; then #get system data failed
+        exit
+      fi
+    fi
+  else #leeres Passwort
+    zenity --warning --no-wrap --text "Password empty, please type in a password" --title "Password" 2> /dev/null
+    exit
+  fi
+fi
+
+
+
 assetName=$(hostname)
 #sysModel=$(system_profiler SPHardwareDataType | grep 'Model Name' | cut -d ":" -f2)
 sysManufacturer="Apple"
