@@ -10,7 +10,7 @@ Download [Platypus](https://github.com/sveinbjornt/Platypus) and [Pashua](https:
 Then edit the file `inventory.sh` to at least contain the api-key and the Base-Url of your Snipe-IT installation.
 ```
 apiKey=""    <-your Snipe-IT Key should go here>
-baseUrl=""   <-your Snipe-IT Base URL should go here>
+baseUrl=""   <-your Snipe-IT Base URL should go here, without trailing slash>
 ```
 
 You can fully disable the GUI by changing `enableGUI="1"` to `enableGUI="0"`, but be aware, that the asset-tag will be pulled from the hostname, no user will be created and therefore no email will be assigned.
@@ -35,9 +35,9 @@ example: osField = "_snipeit_operating_system_6"
 $statusID is the status checked out assets will be transferred to					
 example: statusID = "2"															
 ```
+## 
 
-
-## Deployment
+### Deploying the client
 
 
 
