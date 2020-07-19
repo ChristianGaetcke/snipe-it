@@ -1,4 +1,4 @@
-##OSX Client
+## OSX Client
 
 ### Building the OSX Client
 

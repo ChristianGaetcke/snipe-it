@@ -1,6 +1,8 @@
 ## Windows client
 
-Then edit the file 'inventory.ps1' to at least contain the api-key and the Base-Url of your Snipe-IT installation.
+### Building the Win Client
+
+Then edit the file `inventory.ps1` to at least contain the api-key and the Base-Url of your Snipe-IT installation.
 ```
 $apiKey=""    <-your Snipe-IT Key should go here>
 $baseUrl=""   <-your Snipe-IT Base URL should go here>
@@ -25,10 +27,13 @@ example: $statusID = "2"
 ```
 and leave everything else as it is. 
 
-If you want your users to type in the asset tag manually, change `$getTag=0` to `$getTag=0`.
-If you want to disable the GUI, change `$enableGUI=1` to `$enableGUI=2` (This will only inventorize the asset without a user)
+You can fully disable the GUI by changing `$enableGUI="1"` to `$enableGUI="2"`, but be aware, that the asset-tag will be pulled from the hostname, no user will be created and therefore no email will be assigned.
 
-Then save everything and zip the folder and send it out to your users.
+Additional to that, you can disable the manual entry of the asset tag, if you are sure your machines have been assigned the proper hostname while they were rolled out. To do that, you need to change `getTag="1"` to `getTag="0"`
+
+### Deploying the client
+
+After editing the `inventory.ps1` file and saving everything, zip `inventory.ps1` and `helper.bat` into a folder and send it out to your clients. The `helper.bat`will start an elevated powershell to run the script. It will still warn your users, who'll need to acknowledge the script, but in a more tech unsavvy people way.
 
 After running the batch-file, your users will see this, if you enabled manual setting of the asset-name:
 ![Snipe-IT asset manual](../../img/winclient-asset.JPG)
