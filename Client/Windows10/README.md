@@ -8,15 +8,15 @@
 You'll need to create some fieldsets in Snipe-IT for these clients to work properly. For a proper inventorization I choose the CPU, Disksize, Ramsize, Primary Macaddress and the OS.
 These fields need to be added to the client-scripts, as they aren't standartized. The names of the fields need to be pulled from Snipe-IT => Custom Fields => DB Field and then inserted into the clients.
 
-![Snipe-IT Fieldsets](../img/snipeit-fieldsets.JPG)
+![Snipe-IT Fieldsets](../../img/snipeit-fieldsets.JPG)
 
 Afterwards you'll need to get the ID of the fieldset you want to assign to your assets. (You can find it by going to your custom fieldsets => open the fieldset itself=>last number of the URL is the fieldset ID).
 
-![Snipe-IT Fieldset ID](../img/fieldset-id.JPG)
+![Snipe-IT Fieldset ID](../../img/fieldset-id.JPG)
 
 Last but not least, you'll need to get the status-id of the status you want to have after the device is checked out. This can be found under Status Labels => edit the status label => last number of the URL is the status-ID).
 
-![Snipe-IT Statuslabel](../img/statuslabel.JPG)
+![Snipe-IT Statuslabel](../../img/statuslabel.JPG)
 
 ### Windows client
 
