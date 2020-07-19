@@ -6,15 +6,16 @@
 
 Download [Platypus](https://github.com/sveinbjornt/Platypus) and [Pashua](https://github.com/BlueM/Pashua). 
 
+#### Add API Key and Base-URL
 
 Then edit the file `inventory.sh` to at least contain the api-key and the Base-Url of your Snipe-IT installation.
 ```
 apiKey=""    <-your Snipe-IT Key should go here>
 baseUrl=""   <-your Snipe-IT Base URL should go here, without trailing slash>
 ```
-
+#### En-/Disable GUI
 You can fully disable the GUI by changing `enableGUI="1"` to `enableGUI="0"`, but be aware, that the asset-tag will be pulled from the hostname, no user will be created and therefore no email will be assigned.
-
+#### En-/Disable automatic tagging
 Additional to that, you can disable the manual entry of the asset tag, if you are sure your machines have been assigned the proper hostname while they were rolled out. To do that, you need to change `getTag="1"` to `getTag="0"`
 
 Assuming you already have created the extra Fieldsets in Snipe-IT, you'll need to update them in `inventory.sh` as stated in the examples:
