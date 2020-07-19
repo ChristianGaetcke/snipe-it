@@ -76,7 +76,8 @@ if passwort=$(zenity --entry --hide-text --text "This script needs root permissi
       zenity --warning --no-wrap --text "Wrong password!" --title "Passwort" 2> /dev/null
       exit
     else # password right
-      echo "$passwort" | sudo -S -i -k $@ lshw -c system # get system data
+      echo "$passwort" | sudo -S -i -k $@ dmidecode -t system   # get system data
+      grep 'serial' | cut -d ":" -f2
       if ! [ $? -eq 0 ]; then #get system data failed
         exit
       fi
