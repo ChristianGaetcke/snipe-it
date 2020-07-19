@@ -7,7 +7,7 @@
 Download [Platypus](https://github.com/sveinbjornt/Platypus) and [Pashua](https://github.com/BlueM/Pashua). 
 
 
-Then edit the file 'inventory.sh' to at least contain the api-key and the Base-Url of your Snipe-IT installation.
+Then edit the file `inventory.sh` to at least contain the api-key and the Base-Url of your Snipe-IT installation.
 ```
 apiKey=""    <-your Snipe-IT Key should go here>
 baseUrl=""   <-your Snipe-IT Base URL should go here>
