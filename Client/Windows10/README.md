@@ -1,10 +1,4 @@
-# Snipe-IT Rest Api Clients
-
-
-## Preparing Snipe-IT and the Clients
-
-
-### Windows client
+## Windows client
 
 Just define the parameters by following the examples in inventory.ps1
 ```

@@ -1,7 +1,4 @@
-
-
-
-## Preparing Snipe-IT and the Clients
+##OSX Client
 
 ### Building the OSX Client
 
