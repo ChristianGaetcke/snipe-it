@@ -20,20 +20,20 @@ Additional to that, you can disable the manual entry of the asset tag, if you ar
 Assuming you already have created the extra Fieldsets in Snipe-IT, you'll need to update them in `inventory.sh` as stated in the examples:
 
 ```
-Fieldset-ID:																		
-example: fsField = "2"															
-CPU-Field:																		
-example: cpuField = "_snipeit_cpu_4"												
-RAM-Field:																		
-example: ramField = "_snipeit_ram_2"												
-Macaddress-Field:																	
-example: macField = "_snipeit_mac_address_1"										
-Disk-Field:																		
-example: diskField = "_snipeit_disksize_3"										
-Operatingsystem-Field																
-example: osField = "_snipeit_operating_system_6"									
-$statusID is the status checked out assets will be transferred to					
-example: statusID = "2"															
+Fieldset-ID:
+example: fsField = "2"
+CPU-Field:
+example: cpuField = "_snipeit_cpu_4"
+RAM-Field:
+example: ramField = "_snipeit_ram_2"
+Macaddress-Field:
+example: macField = "_snipeit_mac_address_1"
+Disk-Field:
+example: diskField = "_snipeit_disksize_3"
+Operatingsystem-Field	
+example: osField = "_snipeit_operating_system_6"
+$statusID is the status checked out assets will be transferred to
+example: statusID = "2"				
 ```
 ## 
 
