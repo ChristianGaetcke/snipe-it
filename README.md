@@ -70,7 +70,24 @@ And this, if you disabled it:
 
 ### OSX client
 
-Download [Platypus](https://github.com/sveinbjornt/Platypus) and [Pashua](https://github.com/BlueM/Pashua)
+On a Mac: Download [Platypus](https://github.com/sveinbjornt/Platypus) and [Pashua](https://github.com/BlueM/Pashua). Download osx-script.sh and pashua.sh.
+Define the parameters by following the examples in osx-script.sh.
+```
+apiKey = ''
+baseUrl = ""
+fsField = ""
+cpuField = ""
+ramField = ""
+macField = ""
+diskField = ""
+osField = ""
+statusID = ""
+```
+and leave everything else as it is. 
+If you want your users to type in the asset tag manually, change `getTag="1"` to `getTag="0"`.
+If you want to disable the GUI, change `enableGUI="0"` to `enableGUI="1"` (This will only inventorize the asset without a user)
+
+Now open Platypus and add the script to your new program.
 
 ## Deployment
 
@@ -82,6 +99,10 @@ The OSX client
 ## Some notes on the code
 
 The code is far from perfect or optimized, but should serve as an inspiration for people who want to try out Snipe-IT or just want to do their inventorization and don't have the necessary environment.
+
+## Security
+
+Please be aware, that your Snipe-IT API Key will be readable. Either work with a very restricted acocunt that can create Models,Assets, Categories etc and check assets out or make sure that the file is encrypted (not in the scope of this project)
 
 ## Built With
 
