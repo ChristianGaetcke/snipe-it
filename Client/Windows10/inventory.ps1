@@ -31,9 +31,10 @@ $enableGUI=1
 # $baseUrl = 'https://snipeit.example.com'		 
 #########################################################
 
-$apiKey = ''
-$header = @{'authorization'='Bearer ' + $apiKey ;'accept' = 'application/json' ; 'content-type' = 'application/json'}
+$apiKey = ""
 $baseUrl = ""
+$header = @{'authorization'='Bearer ' + $apiKey ;'accept' = 'application/json' ; 'content-type' = 'application/json'}
+
 
 
 #########################################################################################
