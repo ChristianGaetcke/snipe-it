@@ -41,7 +41,7 @@ example: statusID = "2"
 
 As soon as you have added the necessary values to `inventory.sh` it is time to use pashua and inspect the package itself. You'll want to extract the following files to your desktop: `pashua.sh`
 
-For convenience I already added a fully packed client where I removed the additional icons and xml-files. (reducing the size of the app by nearly 800kB). You'll only need to inspect the folder, go to `path-to-cript`and do the above mentioned changes.
+For convenience I already added a fully packed client where I removed the additional icons and xml-files. (reducing the size of the app by nearly 800kB). You'll only need to inspect the folder `Invetory.app`, go to `Resources`and do the above mentioned changes to the file script and save everything. Then you can send the app directly to your users..
 
 ## Deployment
 
