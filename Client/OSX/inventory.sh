@@ -245,7 +245,7 @@ then
 --header 'accept: application/json' \
 --header "authorization: Bearer $apiKey" \
 --header 'content-type: application/json' \
---data '{"name": "'"$category"'", "manufacturer_id": "'"$manuId"'"}'
+--data '{"name": "'"$category"'", "category_id": "asset"}'
 else
 	echo "Category exists"
 fi
@@ -278,7 +278,7 @@ then
 --header 'accept: application/json' \
 --header "authorization: Bearer $apiKey" \
 --header 'content-type: application/json' \
---data '{"name": "'"$sysFull"'", "manufacturer_id": "'"$manuId"'", "category_id":"'"$catId"'", "fieldset_id":"'"$fsField"'"}'
+--data '{"name": "'"$sysFull"'", "manufacturer_id": "'"$manuId"'", "category_id": "'"$catId"'", "fieldset_id":"'"$fsField"'"}'
 else
 	echo "Model exists"
 fi
