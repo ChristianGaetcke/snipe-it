@@ -41,7 +41,7 @@ example: statusID = "2"
 
 ### Use the prebuild app
 
-For convenience I already added a fully packed client where I removed the additional icons and xml-files. (reducing the size of the app by nearly 800kB).
+For convenience I already added a fully packed client where I removed the additional icons and html-files. (reducing the size of the app by nearly 800kB).
 Just clone the whole project to your desktop/preferred folder with 
 ```
 git clone https://github.com/ChristianGaetcke/snipe-it.git
@@ -53,7 +53,7 @@ sudo chmod +x snipe-it/Client/OSX/Inventory.app/Contents/Resources/script
 sudo chmod +x snipe-it/Client/OSX/Inventory.app/Contents/Resources/Pashua.app/Contents/MacOS/Pashua
 ```
 
-Then you'll need to inspect the folder `Invetory.app`, go to `Resources`and do the above mentioned changes to the file `script` and save everything. Then you can send the app directly to your users. 
+Then you'll need to inspect the folder `Inventory.app`, go to `Resources`and do the above mentioned changes to the file `script` and save everything. Then you can send the app directly to your users. 
 
 ### Build your own app
 
