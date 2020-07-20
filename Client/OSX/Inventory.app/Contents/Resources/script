@@ -245,7 +245,7 @@ then
 --header 'accept: application/json' \
 --header "authorization: Bearer $apiKey" \
 --header 'content-type: application/json' \
---data '{"name": "'"$category"'", "category_id": "asset"}'
+--data '{"name": "'"$category"'", "category_type": "asset"}'
 else
 	echo "Category exists"
 fi
