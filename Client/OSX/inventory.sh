@@ -278,7 +278,7 @@ then
 --header 'accept: application/json' \
 --header "authorization: Bearer $apiKey" \
 --header 'content-type: application/json' \
---data '{"name": "'"$sysFull"'", "manufacturer_id": "'"$manuId"'", "category_id":"3", "fieldset_id":"2"}'
+--data '{"name": "'"$sysFull"'", "manufacturer_id": "'"$manuId"'", "category_id":"'"$catId"'", "fieldset_id":"'"$fsField"'"}'
 else
 	echo "Model exists"
 fi
