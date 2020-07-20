@@ -8,9 +8,9 @@ $apiKey=""    <-your Snipe-IT Key should go here>
 $baseUrl=""   <-your Snipe-IT Base URL should go here, without trailing slash>
 ```
 #### en-/disable GUI
-You can fully disable the GUI by changing `$enableGUI="1"` to `$enableGUI="2"`, but be aware, that the asset-tag will be pulled from the hostname, no user will be created and therefore no email will be assigned.
+You can fully disable the GUI by changing `$enableGUI=1` to `$enableGUI=2`, but be aware, that the asset-tag will be pulled from the hostname, no user will be created and therefore no email will be assigned.
 #### en-/disable automatic tagging
-Additional to that, you can disable the manual entry of the asset tag, if you are sure your machines have been assigned the proper hostname while they were rolled out. To do that, you need to change `getTag="1"` to `getTag="0"`
+Additional to that, you can disable the manual entry of the asset tag, if you are sure your machines have been assigned the proper hostname while they were rolled out. To do that, you need to change `getTag=1` to `getTag=0`
 
 #### adding additional fieldsets
 Assuming you already have created the extra Fieldsets in Snipe-IT, you'll need to update them in `inventory.ps1` as stated in the examples:
