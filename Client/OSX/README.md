@@ -39,13 +39,21 @@ $statusID is the status checked out assets will be transferred to
 example: statusID = "2"
 ```
 
-As soon as you have added the necessary values to `inventory.sh` it is time to use pashua and inspect the package itself. You'll want to extract the following files to your desktop: `pashua.sh`
+### Use the prebuild app
 
-For convenience I already added a fully packed client where I removed the additional icons and xml-files. (reducing the size of the app by nearly 800kB). You'll only need to inspect the folder `Invetory.app`, go to `Resources`and do the above mentioned changes to the file `script` and save everything. Then you can send the app directly to your users.
+For convenience I already added a fully packed client where I removed the additional icons and xml-files. (reducing the size of the app by nearly 800kB).
+Just clone the whole project to your desktop/preferred folder with 
+```
+git clone https://github.com/ChristianGaetcke/snipe-it.git
+```
+and from this folder run the following commands:
+```
+sudo chmod +x snipe-it/Client/OSX/Inventory.app/Contents/MacOS/Inventory
+sudo chmod +x snipe-it/Client/OSX/Inventory.app/Contents/Resources/script
+sudo chmod +x snipe-it/Client/OSX/Inventory.app/Contents/Resources/Pashua.app/Contents/MacOS/Pashua
+```
 
-## Deployment
+Then you'll need to inspect the folder `Invetory.app`, go to `Resources`and do the above mentioned changes to the file `script` and save everything. Then you can send the app directly to your users. 
 
-
-
-The OSX client 
+### Build your own app
 
