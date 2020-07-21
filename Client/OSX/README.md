@@ -53,7 +53,7 @@ sudo chmod +x snipe-it/Client/OSX/Inventory.app/Contents/Resources/script
 sudo chmod +x snipe-it/Client/OSX/Inventory.app/Contents/Resources/Pashua.app/Contents/MacOS/Pashua
 ```
 
-Then you'll need to inspect the folder `Inventory.app`, go to `Resources`and do the above mentioned changes to the file `script` and save everything. Then you can send the app directly to your users. 
+Then you'll need to inspect the folder `Inventory.app`, go to `Contents -> Resources`and do the above mentioned changes to the file `script` and save everything. Then you can send the app directly to your users. 
 
 ### Build your own app
 
